@@ -23,7 +23,7 @@ import com.utp.ferreteria.services.ProductoService;
 @RestController
 @RequestMapping("/api/productos")
 public class ProductoController {
-    
+
     @Autowired
     private ProductoService productoService;
 
@@ -52,10 +52,10 @@ public class ProductoController {
 
     @GetMapping("/cantidad")
     public ResponseEntity<Long> obtenerCantidadProductos(
-        @RequestParam(name = "nombre", required = false) String nombre,
-        @RequestParam(name = "categoria", required = false) String categoria,
-        @RequestParam(name = "inicio", required = false, defaultValue = "0") Long inicio,
-        @RequestParam(name = "cantidad", required = false, defaultValue = "0") Long cantidad) {
+            @RequestParam(name = "nombre", required = false) String nombre,
+            @RequestParam(name = "categoria", required = false) String categoria,
+            @RequestParam(name = "inicio", required = false, defaultValue = "0") Long inicio,
+            @RequestParam(name = "cantidad", required = false, defaultValue = "0") Long cantidad) {
         Long cantidadProductosConFiltro = productoService.obtenerCantidadConFiltro(nombre, categoria, inicio, cantidad);
         return ResponseEntity.ok(cantidadProductosConFiltro);
     }
@@ -67,22 +67,32 @@ public class ProductoController {
     }
 
     @PostMapping
-    public ResponseEntity<String> guardarProducto(@RequestBody ProductRequest request) {
+    public ResponseEntity<Map<String, String>> guardarProducto(@RequestBody ProductRequest request) {
         productoService.guardarProducto(request);
-        return ResponseEntity.ok("Producto guardado con exito");
+
+        Map<String, String> response = new HashMap<>();
+        response.put("mensaje", "Producto guardado con éxito");
+
+        return ResponseEntity.ok(response);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> actualizarProducto(@PathVariable(name = "id") Long id, @RequestBody ProductRequest request) {
+    public ResponseEntity<Map<String, String>> actualizarProducto(@PathVariable(name = "id") Long id,
+            @RequestBody ProductRequest request) {
         productoService.actualizarProducto(id, request);
-        return ResponseEntity.ok("Producto actualizado con exito");
+
+        Map<String, String> response = new HashMap<>();
+        response.put("mensaje", "Producto actualizado con éxito");
+        return ResponseEntity.ok(response);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminarProducto(@PathVariable(name = "id") Long id) {
+    public ResponseEntity<Map<String, String>> eliminarProducto(@PathVariable(name = "id") Long id) {
         productoService.eliminarProducto(id);
-        return ResponseEntity.ok("Producto eliminado con exito");
+
+        Map<String, String> response = new HashMap<>();
+        response.put("mensaje", "Producto eliminado con éxito");
+        return ResponseEntity.ok(response);
     }
 
-    
 }

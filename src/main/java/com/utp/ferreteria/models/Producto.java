@@ -44,7 +44,7 @@ public class Producto {
     @Column
     private int cantidad;
 
-    @Column(length = 300)
+    @Column(length = 500)
     private String descripcion;
 
     @Column
