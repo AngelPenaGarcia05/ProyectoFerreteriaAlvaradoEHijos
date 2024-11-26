@@ -2,7 +2,6 @@ package com.utp.ferreteria.services;
 
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -17,7 +16,6 @@ public class ApiReniecService {
 
     private final RestTemplate restTemplate;
 
-    @Autowired
     public ApiReniecService(RestTemplateBuilder restTemplateBuilder) {
         this.restTemplate = restTemplateBuilder.build();
     }
