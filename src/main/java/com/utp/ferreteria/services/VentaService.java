@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.utp.ferreteria.dto.DetalleVentaDTO;
 import com.utp.ferreteria.dto.VentaRequest;
@@ -33,7 +32,6 @@ public class VentaService {
     @Autowired
     private DetalleVentaRepository detalleVentaRepository;
 
-    @Transactional
     public Venta insertarVenta(VentaRequest ventaRequest) {
         // Crear una nueva venta
         Venta venta = new Venta();

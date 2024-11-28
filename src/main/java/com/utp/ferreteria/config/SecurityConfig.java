@@ -29,6 +29,7 @@ public class SecurityConfig {
                 .requestMatchers("/api/proveedores/**").permitAll()
                 .requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers("/api/enviar-correo").permitAll()
+                .requestMatchers("/api/ventas/**").permitAll()
                 .requestMatchers("/error").permitAll()
                 .anyRequest().authenticated()
             )

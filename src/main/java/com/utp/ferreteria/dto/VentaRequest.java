@@ -18,5 +18,4 @@ public class VentaRequest {
     private Date fecha;
     private Long clienteID;
     private List<DetalleVentaDTO> detallesVenta; // Asegúrate de tener la clase DetalleVentaDTO
-
 }

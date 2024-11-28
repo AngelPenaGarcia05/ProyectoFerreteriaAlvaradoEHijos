@@ -9,9 +9,9 @@ import com.utp.ferreteria.models.Cliente;
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
     Optional<Cliente> findByEmail(String email);
 
-    Optional<Cliente> findByNombre(String nombre);
+    Optional<Cliente> findByNombres(String nombre);
 
-    Optional<Cliente> findByApellido(String apellido);
+    Optional<Cliente> findByApellidos(String apellido);
 
     Optional<Cliente> findById(long id);
 }
