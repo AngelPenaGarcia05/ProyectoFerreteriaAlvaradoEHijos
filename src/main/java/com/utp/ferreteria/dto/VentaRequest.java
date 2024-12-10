@@ -17,5 +17,10 @@ public class VentaRequest {
     private String estado;
     private Date fecha;
     private Long clienteID;
+    private String nombres;
+    private String direccion;
+    private String codigoPostal;
+    private String telefono;
+    private String instrucciones;
     private List<DetalleVentaDTO> detallesVenta; // Asegúrate de tener la clase DetalleVentaDTO
 }

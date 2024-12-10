@@ -10,12 +10,20 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
 
 import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "detalleventas")
 public class DetalleVenta {
@@ -36,5 +44,6 @@ public class DetalleVenta {
 
     @ManyToOne
     @JoinColumn(name = "ventaID")
+    @JsonBackReference
     private Venta venta;
 }

@@ -15,15 +15,22 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
 import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "ventas")
 public class Venta {
@@ -41,11 +48,20 @@ public class Venta {
     @Temporal(TemporalType.DATE)
     private Date fecha;
 
+    BigDecimal total;
+
+    String nombres;
+    String dirección;
+    String codigoPostal;
+    String telefono;
+    String instrucciones;
+
+
     @ManyToOne
     @JoinColumn(name = "clienteID")
     private Cliente cliente;
 
     @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore
+    @JsonManagedReference
     private List<DetalleVenta> detallesVenta;
 }

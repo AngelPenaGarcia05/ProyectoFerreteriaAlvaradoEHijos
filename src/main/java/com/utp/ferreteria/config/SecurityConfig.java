@@ -30,6 +30,7 @@ public class SecurityConfig {
                 .requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers("/api/enviar-correo").permitAll()
                 .requestMatchers("/api/ventas/**").permitAll()
+                .requestMatchers("/api/currency/**").permitAll()
                 .requestMatchers("/error").permitAll()
                 .anyRequest().authenticated()
             )
